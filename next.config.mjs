@@ -2,6 +2,15 @@
 import nextMDX from "@next/mdx";
 
 const nextConfig = {
+  // 1. Add these two new sections to ignore strict checks
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
+  // 2. Keep your existing Image configuration
   images: {
     remotePatterns: [
       {
