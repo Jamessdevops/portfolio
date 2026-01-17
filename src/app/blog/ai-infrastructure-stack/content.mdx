@@ -1,0 +1,60 @@
+import { BlogLayout } from "@/components/BlogLayout";
+
+import { CodeWindow } from "@/components/CodeWindow";
+
+export const meta = {
+  date: "2023-08-18",
+  title: "The AI Infrastructure Stack in 2026",
+  description:
+    "Moving beyond simple API calls to building resilient, scalable inference pipelines.",
+  image:
+    "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*qLoxJsZItSL2uu0kaZlJXA.png",
+  tags: ["AI Infrastructure"],
+};
+
+export default (props) => <BlogLayout meta={meta} {...props} />;
+
+While the world obsesses over the latest model release or benchmark score, a quiet revolution is happening in the background. It’s not in the models themselves, but in how we run them.
+
+For software engineers, "AI Infrastructure" has become the new DevOps. It is no longer enough to just know how to hit an OpenAI endpoint. As we move from prototypes to production, the bottleneck has shifted from intelligence to inference.
+
+Here is why the next big opportunity in engineering isn't training models—it's serving them.
+
+1. The Shift: Inference is the New Backend
+In traditional web development, we optimize for database queries and latency. In AI infrastructure, we optimize for Tokens Per Second (TPS) and Time to First Token (TTFT).
+
+The old way was simple: A Python script calling a closed API. The new way is complex: A private VPC running open-weights models (like Llama 3 or Mistral) on dedicated hardware, orchestrated by tools that manage cold starts and scaling.
+
+If you are building infrastructure today, you aren't just managing servers; you are managing probability engines.
+
+2. The Stack: Ray, Kubernetes, and vLLM
+The standardized "AI Infra Stack" is starting to solidify. If you are looking to upskill, these are the tools defining the layer between the hardware and your application:
+
+Serving Engines (vLLM / TGI): You can't just run model.generate(). You need an engine that handles continuous batching and PagedAttention. vLLM has become the gold standard here, dramatically increasing the throughput of open-source models.
+
+Orchestration (Ray & K8s): Kubernetes is still king for container orchestration, but Ray has emerged as the specific compute layer for AI. It allows you to scale Python workers across a cluster seamlessly, handling the heavy lifting of distributed computing.
+
+Vector Databases (The Memory): Whether it's Weaviate, Pinecone, or pgvector, the database layer has fundamentally changed. It’s not just about storage anymore; it’s about semantic retrieval speed.
+
+3. The "Serverless" GPU Mirage
+A major debate in the infra world right now is Serverless vs. Dedicated GPUs.
+
+Serverless AI (like endpoints provided by Anyscale or Together AI) is amazing for intermittent workloads. You pay for what you use. But for sustained, high-throughput applications—like a customer support agent running 24/7—the math often favors renting the bare metal.
+
+The job of the AI Platform Engineer is to know exactly where that crossover point lies.
+
+4. Observability: How Do You Debug a Hallucination?
+In traditional infrastructure, if a request fails, you get a 500 error. In AI infrastructure, the request "succeeds," but the output is garbage.
+
+This has given rise to LLM Observability (LLMOps). We need new tools that don't just track CPU usage, but track:
+
+Token cost per user.
+
+Drift detection (is the model getting dumber?).
+
+Traceability (following a prompt through a RAG pipeline).
+
+Conclusion: The "Plumbing" is Where the Value Is
+Building a demo is easy. Building an infrastructure that handles 10,000 concurrent requests, keeps latency under 200ms, and doesn't bankrupt the company? That is hard engineering.
+
+If you are a developer looking for longevity in the AI hype cycle, stop worrying about which model is currently #1 on the leaderboard. Start learning how to deploy, serve, and scale them. The models will change, but the infrastructure to run them is here to stay.
