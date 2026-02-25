@@ -13,7 +13,7 @@ export const socials = [
     icon: IconBrandX,
   },
   {
-    href: "https://www.linkedin.com/feed/",
+    href: "https://www.linkedin.com/in/s-james-a1b2603a8/",
     label: "LinkedIn",
     icon: IconBrandLinkedin,
   },
