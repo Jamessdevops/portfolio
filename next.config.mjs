@@ -10,6 +10,10 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
 
+  async rewrites() {
+    return [{ source: '/habit/privacy', destination: '/habit/privacy.html' }];
+  },
+
   // 2. Keep your existing Image configuration
   images: {
     remotePatterns: [
